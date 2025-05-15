@@ -65,7 +65,7 @@ fun MapScreen(
     ) {
         // 한국 지도 이미지
         Image(
-            painter = painterResource(id = R.drawable.korea_map_detailed),
+            painter = painterResource(id = R.drawable.korea_map_realistic),
             contentDescription = "대한민국 지도",
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Fit
@@ -106,7 +106,7 @@ private fun CityMarker(
     onClick: () -> Unit,
     isSelected: Boolean
 ) {
-    val markerSize = 30.dp
+    val markerSize = 24.dp
     val density = LocalDensity.current
     
     val xPos = (screenWidth.value * city.xCoordinate).roundToInt()
@@ -114,7 +114,7 @@ private fun CityMarker(
     
     Box(
         modifier = Modifier
-            .offset { IntOffset(xPos, yPos) }
+            .offset { IntOffset(xPos - (markerSize.value / 2).roundToInt(), yPos - (markerSize.value / 2).roundToInt()) }
             .size(markerSize)
             .clip(CircleShape)
             .background(if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary)
@@ -125,7 +125,7 @@ private fun CityMarker(
             text = city.name.take(1),
             color = Color.White,
             fontWeight = FontWeight.Bold,
-            fontSize = 14.sp
+            fontSize = 12.sp
         )
     }
 }
@@ -140,11 +140,11 @@ private fun SpeechBubble(
     screenHeight: androidx.compose.ui.unit.Dp
 ) {
     val xPos = (screenWidth.value * city.xCoordinate).roundToInt()
-    val yPos = (screenHeight.value * city.yCoordinate).roundToInt() - 120
+    val yPos = (screenHeight.value * city.yCoordinate).roundToInt() - 80
     
     // 화면 경계를 벗어나지 않도록 조정
-    val adjustedX = xPos.coerceIn(0, screenWidth.value.toInt() - 200)
-    val adjustedY = yPos.coerceIn(0, screenHeight.value.toInt() - 150)
+    val adjustedX = xPos.coerceIn(20, screenWidth.value.toInt() - 220)
+    val adjustedY = yPos.coerceIn(20, screenHeight.value.toInt() - 150)
     
     Box(
         modifier = Modifier

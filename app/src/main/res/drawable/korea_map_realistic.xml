@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="512dp"
+    android:viewportWidth="360"
+    android:viewportHeight="512">
+
+    <!-- 경기도 및 서울 -->
+    <path
+        android:fillColor="#E8E8E8"
+        android:strokeWidth="1.5"
+        android:strokeColor="#444444"
+        android:pathData="M157,80 L175,90 L187,85 L193,94 L200,88 L205,98 L212,92 L218,96 L227,90 
+                         L227,100 L235,108 L228,118 L222,122 L215,132 L208,133 L198,140 L185,142 
+                         L170,134 L168,120 L158,116 L153,105 L157,95 L147,90 L153,83 Z" />
+
+    <!-- 강원도 -->
+    <path
+        android:fillColor="#E8E8E8"
+        android:strokeWidth="1.5"
+        android:strokeColor="#444444"
+        android:pathData="M228,118 L235,108 L242,112 L248,106 L260,112 L267,105 L275,112 L272,122 
+                         L278,128 L274,135 L278,142 L268,150 L262,160 L250,165 L240,158 L232,165 
+                         L222,160 L215,165 L215,154 L222,148 L222,138 L215,132 L222,122" />
+
+    <!-- 충청북도 -->
+    <path
+        android:fillColor="#E8E8E8"
+        android:strokeWidth="1.5"
+        android:strokeColor="#444444"
+        android:pathData="M187,145 L198,140 L208,133 L215,132 L222,138 L222,148 L215,154 L215,165 
+                         L208,172 L198,178 L188,175 L178,180 L168,175 L170,163 L175,155 L168,150 
+                         L175,148 L180,142" />
+
+    <!-- 충청남도 -->
+    <path
+        android:fillColor="#E8E8E8"
+        android:strokeWidth="1.5"
+        android:strokeColor="#444444"
+        android:pathData="M140,142 L158,138 L170,134 L180,142 L175,148 L168,150 L170,163 L168,175 
+                         L162,183 L152,185 L145,195 L138,188 L132,192 L125,182 L132,172 L125,162 
+                         L136,155 L132,148" />
+
+    <!-- 전라북도 -->
+    <path
+        android:fillColor="#E8E8E8"
+        android:strokeWidth="1.5"
+        android:strokeColor="#444444"
+        android:pathData="M145,195 L152,185 L162,183 L168,175 L178,180 L188,175 L198,178 L208,172 
+                         L205,183 L212,188 L205,195 L198,205 L188,208 L178,215 L168,212 L162,215 
+                         L152,208 L145,215 L138,208 L130,210 L125,205 L130,198" />
+
+    <!-- 전라남도 -->
+    <path
+        android:fillColor="#E8E8E8"
+        android:strokeWidth="1.5"
+        android:strokeColor="#444444"
+        android:pathData="M125,205 L130,210 L138,208 L145,215 L152,208 L162,215 L168,212 L178,215 
+                         L188,208 L188,220 L178,228 L188,234 L180,238 L182,248 L172,254 L168,262 
+                         L162,255 L152,258 L146,265 L135,262 L125,265 L118,255 L110,260 L102,252 
+                         L110,245 L102,240 L106,232 L112,235 L123,228 L125,218" />
+
+    <!-- 경상북도 -->
+    <path
+        android:fillColor="#E8E8E8"
+        android:strokeWidth="1.5"
+        android:strokeColor="#444444"
+        android:pathData="M215,165 L222,160 L232,165 L240,158 L250,165 L262,160 L270,168 L268,178 
+                         L275,183 L268,192 L274,198 L272,208 L262,214 L252,208 L246,215 L235,212 
+                         L232,225 L225,228 L218,222 L205,225 L200,215 L200,205 L190,202 L188,192 
+                         L196,188 L205,195 L212,188 L205,183 L208,172" />
+
+    <!-- 경상남도 -->
+    <path
+        android:fillColor="#E8E8E8"
+        android:strokeWidth="1.5"
+        android:strokeColor="#444444"
+        android:pathData="M188,208 L196,202 L200,205 L200,215 L205,225 L218,222 L225,228 L232,225 
+                         L232,234 L238,238 L232,245 L240,250 L235,258 L225,258 L220,265 L208,262 
+                         L200,270 L195,260 L188,265 L183,255 L182,248 L188,234 L178,228 L188,220" />
+
+    <!-- 제주도 -->
+    <path
+        android:fillColor="#E8E8E8"
+        android:strokeWidth="1.5"
+        android:strokeColor="#444444"
+        android:pathData="M145,312 L165,310 L175,315 L178,325 L172,335 L162,338 L152,335 L142,325 
+                         L145,318" />
+
+    <!-- 독도 -->
+    <path
+        android:fillColor="#E8E8E8"
+        android:strokeWidth="1.5"
+        android:strokeColor="#444444"
+        android:pathData="M300,240 L305,236 L310,240 L307,244 L302,244" />
+</vector>
