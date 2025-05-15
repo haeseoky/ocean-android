@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="512dp"
+    android:height="512dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+    
+    <!-- 대한민국 지도 단순화된 형태 -->
+    <path
+        android:fillColor="#D3D3D3"
+        android:strokeWidth="2"
+        android:strokeColor="#444444"
+        android:pathData="M170,140 L250,120 L300,150 L350,170 L370,250 L390,330 L350,380 L300,400 L250,390 L200,380 L180,350 L160,300 L150,240 L170,140 Z" />
+    
+    <!-- 제주도 -->
+    <path
+        android:fillColor="#D3D3D3"
+        android:strokeWidth="2"
+        android:strokeColor="#444444"
+        android:pathData="M190,450 L230,470 L210,490 L180,470 Z" />
+</vector>
