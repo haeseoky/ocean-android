@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="512dp"
+    android:viewportWidth="360"
+    android:viewportHeight="512">
+
+    <!-- 한반도 육지 -->
+    <path
+        android:fillColor="#E0E0E0"
+        android:strokeWidth="1.5"
+        android:strokeColor="#444444"
+        android:pathData="M157,89 L163,81 L168,73 L174,67 L183,61 L193,58 L204,57 L212,60 L219,66 
+                       L224,74 L231,79 L237,85 L241,94 L244,103 L245,112 L242,121 L236,128 
+                       L231,135 L229,143 L232,151 L238,158 L243,165 L246,173 L246,182 L243,190 
+                       L238,197 L232,204 L228,211 L226,220 L229,229 L235,236 L241,243 L244,252 
+                       L242,260 L236,267 L228,272 L219,275 L210,278 L202,282 L195,289 L188,296 
+                       L179,301 L170,304 L160,306 L150,306 L140,303 L133,297 L128,290 L124,282 
+                       L122,273 L123,264 L127,256 L133,249 L138,242 L141,234 L141,225 L137,217 
+                       L132,210 L128,202 L126,193 L127,184 L130,176 L134,168 L137,159 L137,150 
+                       L135,141 L134,132 L135,123 L139,115 L144,107 L150,99 L157,93 Z" />
+
+    <!-- 제주도 -->
+    <path
+        android:fillColor="#E0E0E0"
+        android:strokeWidth="1.5"
+        android:strokeColor="#444444"
+        android:pathData="M162,356 L174,353 L186,356 L193,363 L193,372 L187,379 L176,382 L164,379 L158,371 L158,363 Z" />
+
+    <!-- 독도 -->
+    <path
+        android:fillColor="#E0E0E0"
+        android:strokeWidth="1.5"
+        android:strokeColor="#444444"
+        android:pathData="M290,180 L295,178 L300,180 L302,184 L300,188 L295,190 L290,188 L288,184 Z" />
+
+    <!-- 울릉도 -->
+    <path
+        android:fillColor="#E0E0E0"
+        android:strokeWidth="1.5"
+        android:strokeColor="#444444"
+        android:pathData="M265,190 L275,185 L285,190 L288,200 L285,210 L275,215 L265,210 L262,200 Z" />
+
+    <!-- 내부 경계선 - 도 경계 -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeWidth="0.7"
+        android:strokeColor="#888888"
+        android:pathData="M183,115 L210,120 L230,128
+                        M183,115 L175,150 L190,174
+                        M190,174 L215,174 L230,128
+                        M190,174 L178,213 L195,220
+                        M195,220 L224,211 L215,174
+                        M195,220 L188,258 L200,265
+                        M200,265 L227,255 L224,211" />
+
+    <!-- 주요 도시 -->
+    <!-- 서울 -->
+    <path
+        android:fillColor="#E57373"
+        android:pathData="M176,122 L182,122 L182,128 L176,128 Z" />
+
+    <!-- 인천 -->
+    <path
+        android:fillColor="#64B5F6"
+        android:pathData="M162,122 L168,122 L168,128 L162,128 Z" />
+
+    <!-- 대전 -->
+    <path
+        android:fillColor="#81C784"
+        android:pathData="M192,195 L198,195 L198,201 L192,201 Z" />
+
+    <!-- 대구 -->
+    <path
+        android:fillColor="#FFD54F"
+        android:pathData="M232,229 L238,229 L238,235 L232,235 Z" />
+
+    <!-- 부산 -->
+    <path
+        android:fillColor="#7986CB"
+        android:pathData="M249,269 L255,269 L255,275 L249,275 Z" />
+
+    <!-- 광주 -->
+    <path
+        android:fillColor="#9575CD"
+        android:pathData="M168,258 L174,258 L174,264 L168,264 Z" />
+
+    <!-- 울산 -->
+    <path
+        android:fillColor="#4DD0E1"
+        android:pathData="M252,249 L258,249 L258,255 L252,255 Z" />
+
+    <!-- 제주 -->
+    <path
+        android:fillColor="#FF8A65"
+        android:pathData="M175,365 L181,365 L181,371 L175,371 Z" />
+
+    <!-- 강릉 -->
+    <path
+        android:fillColor="#F06292"
+        android:pathData="M236,156 L242,156 L242,162 L236,162 Z" />
+
+    <!-- 전주 -->
+    <path
+        android:fillColor="#AED581"
+        android:pathData="M185,235 L191,235 L191,241 L185,241 Z" />
+</vector>

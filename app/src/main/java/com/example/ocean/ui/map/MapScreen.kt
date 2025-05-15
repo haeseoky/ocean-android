@@ -1,10 +1,15 @@
 package com.example.ocean.ui.map
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,8 +17,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -65,7 +73,7 @@ fun MapScreen(
     ) {
         // 한국 지도 이미지
         Image(
-            painter = painterResource(id = R.drawable.korea_map_realistic),
+            painter = painterResource(id = R.drawable.korea_map_image),
             contentDescription = "대한민국 지도",
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Fit
@@ -86,7 +94,7 @@ fun MapScreen(
         
         // 선택된 도시가 있으면 말풍선 표시
         selectedCity?.let { city ->
-            SpeechBubble(
+            EnhancedSpeechBubble(
                 city = city,
                 screenWidth = screenWidth,
                 screenHeight = screenHeight
@@ -112,12 +120,23 @@ private fun CityMarker(
     val xPos = (screenWidth.value * city.xCoordinate).roundToInt()
     val yPos = (screenHeight.value * city.yCoordinate).roundToInt()
     
+    // 마커 크기 애니메이션
+    val animatedSize by animateDpAsState(
+        targetValue = if (isSelected) markerSize * 1.3f else markerSize,
+        animationSpec = spring(
+            dampingRatio = Spring.DampingRatioMediumBouncy,
+            stiffness = Spring.StiffnessLow
+        ),
+        label = "MarkerSizeAnimation"
+    )
+    
     Box(
         modifier = Modifier
             .offset { IntOffset(xPos - (markerSize.value / 2).roundToInt(), yPos - (markerSize.value / 2).roundToInt()) }
-            .size(markerSize)
+            .size(animatedSize)
             .clip(CircleShape)
             .background(if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary)
+            .border(1.dp, Color.White, CircleShape)
             .clickable(onClick = onClick),
         contentAlignment = Alignment.Center
     ) {
@@ -131,58 +150,82 @@ private fun CityMarker(
 }
 
 /**
- * 말풍선 컴포넌트
+ * 향상된 말풍선 컴포넌트
  */
 @Composable
-private fun SpeechBubble(
+private fun EnhancedSpeechBubble(
     city: CityInfo,
     screenWidth: androidx.compose.ui.unit.Dp,
     screenHeight: androidx.compose.ui.unit.Dp
 ) {
     val xPos = (screenWidth.value * city.xCoordinate).roundToInt()
-    val yPos = (screenHeight.value * city.yCoordinate).roundToInt() - 80
+    val yPos = (screenHeight.value * city.yCoordinate).roundToInt() - 85
     
     // 화면 경계를 벗어나지 않도록 조정
-    val adjustedX = xPos.coerceIn(20, screenWidth.value.toInt() - 220)
+    val bubbleWidth = 200.dp
+    val bubbleWidthPx = with(LocalDensity.current) { bubbleWidth.toPx() }
+    val adjustedX = xPos.coerceIn(20, screenWidth.value.toInt() - (bubbleWidthPx / 2).roundToInt())
     val adjustedY = yPos.coerceIn(20, screenHeight.value.toInt() - 150)
     
     Box(
         modifier = Modifier
-            .offset { IntOffset(adjustedX, adjustedY) }
+            .offset { IntOffset(adjustedX - (bubbleWidth.value / 2).roundToInt(), adjustedY) }
     ) {
+        // 말풍선 애니메이션
         AnimatedVisibility(
             visible = true,
-            enter = fadeIn(),
+            enter = fadeIn() + scaleIn(initialScale = 0.8f),
             exit = fadeOut()
         ) {
-            Surface(
-                modifier = Modifier
-                    .padding(8.dp)
-                    .shadow(4.dp, RoundedCornerShape(8.dp)),
-                shape = RoundedCornerShape(8.dp),
-                color = Color.White
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Column(
-                    modifier = Modifier.padding(12.dp)
+                // 말풍선 카드
+                Card(
+                    modifier = Modifier
+                        .width(bubbleWidth)
+                        .shadow(4.dp, RoundedCornerShape(8.dp)),
+                    shape = RoundedCornerShape(8.dp),
+                    elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+                    colors = CardDefaults.cardColors(containerColor = Color.White)
                 ) {
-                    Text(
-                        text = city.name,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.primary
-                    )
-                    Text(
-                        text = city.famousFood,
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.secondary
-                    )
-                    Text(
-                        text = city.description,
-                        fontSize = 12.sp,
-                        textAlign = TextAlign.Start
-                    )
+                    Column(
+                        modifier = Modifier.padding(12.dp)
+                    ) {
+                        Text(
+                            text = city.name,
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                        Text(
+                            text = city.famousFood,
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.secondary,
+                            modifier = Modifier.padding(top = 4.dp)
+                        )
+                        Text(
+                            text = city.description,
+                            fontSize = 14.sp,
+                            textAlign = TextAlign.Start,
+                            modifier = Modifier.padding(top = 4.dp)
+                        )
+                    }
                 }
+                
+                // 말풍선 꼬리 부분
+                Box(
+                    modifier = Modifier
+                        .size(16.dp, 8.dp)
+                        .clip(
+                            RoundedCornerShape(
+                                bottomStart = 50f,
+                                bottomEnd = 50f
+                            )
+                        )
+                        .background(Color.White)
+                )
             }
         }
     }
