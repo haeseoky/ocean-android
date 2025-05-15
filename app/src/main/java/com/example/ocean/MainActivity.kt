@@ -63,12 +63,16 @@ fun OceanApp() {
     // 현재 선택된 하단 네비게이션 아이템
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
+    val currentRoute = currentDestination?.route
+    
+    // 스플래시 화면인지 확인
+    val isSplashScreen = currentRoute == NavRoutes.Splash.route
     
     // 내비게이션 아이템
     val items = listOf(
         NavigationItem(
             title = "지도",
-            icon = Icons.Filled.Place,  // Map 대신 Place 아이콘 사용
+            icon = Icons.Filled.Place,
             route = NavRoutes.Map.route
         ),
         NavigationItem(
@@ -82,39 +86,45 @@ fun OceanApp() {
         modifier = Modifier.fillMaxSize(),
         snackbarHost = { SnackbarHost(snackbarHostState) },
         topBar = {
-            TopAppBar(
-                title = { Text("대한민국 도시 음식 지도") },
-                colors = TopAppBarDefaults.topAppBarColors()
-            )
+            // 스플래시 화면이 아닐 때만 상단 앱바 표시
+            if (!isSplashScreen) {
+                TopAppBar(
+                    title = { Text("대한민국 도시 음식 지도") },
+                    colors = TopAppBarDefaults.topAppBarColors()
+                )
+            }
         },
         bottomBar = {
-            NavigationBar {
-                items.forEach { item ->
-                    val selected = currentDestination?.hierarchy?.any { it.route == item.route } == true
-                    
-                    NavigationBarItem(
-                        icon = { Icon(item.icon, contentDescription = item.title) },
-                        label = { Text(item.title) },
-                        selected = selected,
-                        onClick = {
-                            navController.navigate(item.route) {
-                                // 백 스택에 쌓이지 않도록 설정
-                                popUpTo(navController.graph.findStartDestination().id) {
-                                    saveState = true
+            // 스플래시 화면이 아닐 때만 하단 네비게이션 바 표시
+            if (!isSplashScreen) {
+                NavigationBar {
+                    items.forEach { item ->
+                        val selected = currentDestination?.hierarchy?.any { it.route == item.route } == true
+                        
+                        NavigationBarItem(
+                            icon = { Icon(item.icon, contentDescription = item.title) },
+                            label = { Text(item.title) },
+                            selected = selected,
+                            onClick = {
+                                navController.navigate(item.route) {
+                                    // 백 스택에 쌓이지 않도록 설정
+                                    popUpTo(navController.graph.findStartDestination().id) {
+                                        saveState = true
+                                    }
+                                    // 중복 네비게이션 방지
+                                    launchSingleTop = true
+                                    // 상태 저장
+                                    restoreState = true
                                 }
-                                // 중복 네비게이션 방지
-                                launchSingleTop = true
-                                // 상태 저장
-                                restoreState = true
                             }
-                        }
-                    )
+                        )
+                    }
                 }
             }
         }
     ) { innerPadding ->
         AppNavigation(
-            modifier = Modifier.padding(innerPadding),
+            modifier = if (!isSplashScreen) Modifier.padding(innerPadding) else Modifier,
             navController = navController
         )
     }

@@ -14,11 +14,13 @@ import com.example.ocean.ui.home.HomeViewModel
 import com.example.ocean.ui.map.MapScreen
 import com.example.ocean.ui.map.MapUiState
 import com.example.ocean.ui.map.MapViewModel
+import com.example.ocean.ui.splash.SplashScreen
 
 /**
  * 앱 네비게이션 경로
  */
 sealed class NavRoutes(val route: String) {
+    object Splash : NavRoutes("splash")
     object Home : NavRoutes("home")
     object Map : NavRoutes("map")
 }
@@ -30,13 +32,25 @@ sealed class NavRoutes(val route: String) {
 fun AppNavigation(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = NavRoutes.Map.route
+    startDestination: String = NavRoutes.Splash.route
 ) {
     NavHost(
         navController = navController,
         startDestination = startDestination,
         modifier = modifier
     ) {
+        composable(NavRoutes.Splash.route) {
+            SplashScreen(
+                onNavigateToMain = {
+                    // 스플래시 화면 이후 지도 화면으로 이동
+                    navController.navigate(NavRoutes.Map.route) {
+                        // 스플래시 화면은 백 스택에서 제거 (뒤로가기 시 스플래시로 가지 않도록)
+                        popUpTo(NavRoutes.Splash.route) { inclusive = true }
+                    }
+                }
+            )
+        }
+
         composable(NavRoutes.Home.route) {
             val homeViewModel: HomeViewModel = viewModel()
             HomeScreen(
