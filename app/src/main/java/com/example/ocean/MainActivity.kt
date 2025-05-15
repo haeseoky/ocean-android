@@ -42,15 +42,16 @@ fun OceanApp() {
         snackbarHost = { SnackbarHost(snackbarHostState) },
         topBar = {
             TopAppBar(
-                title = { Text("Ocean Explorer") },
+                title = { Text("대한민국 도시 음식 지도") },
                 colors = TopAppBarDefaults.topAppBarColors()
             )
         }
     ) { innerPadding ->
+        // 지도 화면 대신 홈 화면 사용 (의존성 문제 해결까지)
         HomeScreen(
             modifier = Modifier.padding(innerPadding),
             onItemClick = {
-                // TODO: 아이템 클릭 이벤트 처리 (상세 화면으로 이동)
+                // 아이템 클릭시 작업
             }
         )
     }
