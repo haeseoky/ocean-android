@@ -27,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
@@ -64,9 +65,10 @@ fun MapScreen(
     ) {
         // 한국 지도 이미지
         Image(
-            painter = painterResource(id = R.drawable.korea_map),
+            painter = painterResource(id = R.drawable.korea_map_detailed),
             contentDescription = "대한민국 지도",
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Fit
         )
         
         // 도시 마커 표시
@@ -104,7 +106,7 @@ private fun CityMarker(
     onClick: () -> Unit,
     isSelected: Boolean
 ) {
-    val markerSize = 24.dp
+    val markerSize = 30.dp
     val density = LocalDensity.current
     
     val xPos = (screenWidth.value * city.xCoordinate).roundToInt()
@@ -123,7 +125,7 @@ private fun CityMarker(
             text = city.name.take(1),
             color = Color.White,
             fontWeight = FontWeight.Bold,
-            fontSize = 12.sp
+            fontSize = 14.sp
         )
     }
 }
@@ -138,7 +140,7 @@ private fun SpeechBubble(
     screenHeight: androidx.compose.ui.unit.Dp
 ) {
     val xPos = (screenWidth.value * city.xCoordinate).roundToInt()
-    val yPos = (screenHeight.value * city.yCoordinate).roundToInt() - 100
+    val yPos = (screenHeight.value * city.yCoordinate).roundToInt() - 120
     
     // 화면 경계를 벗어나지 않도록 조정
     val adjustedX = xPos.coerceIn(0, screenWidth.value.toInt() - 200)

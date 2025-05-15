@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="512dp"
+    android:viewportWidth="360"
+    android:viewportHeight="512">
+
+    <!-- 한반도 본토 -->
+    <path
+        android:fillColor="#E0E0E0"
+        android:strokeWidth="2"
+        android:strokeColor="#444444"
+        android:pathData="M163,100 L177,90 L184,73 L196,85 L207,65 L229,70 L242,90 L252,83 L261,97
+                          L271,95 L278,110 L271,125 L278,135 L267,145 L275,161 L263,180
+                          L245,190 L248,210 L265,215 L275,230 L263,245 L270,260 L257,280
+                          L258,300 L247,310 L245,330 L234,342 L220,360 L200,365 L185,350
+                          L175,360 L168,340 L154,335 L149,315 L130,310 L125,290 L140,270
+                          L120,250 L110,230 L125,210 L120,180 L134,170 L140,150 L157,130 Z" />
+
+    <!-- 제주도 -->
+    <path
+        android:fillColor="#E0E0E0"
+        android:strokeWidth="2"
+        android:strokeColor="#444444"
+        android:pathData="M180,400 L195,395 L210,400 L215,410 L210,420 L195,425 L180,420 L175,410 Z" />
+
+    <!-- 주요 도시들 -->
+    <!-- 서울 -->
+    <path
+        android:fillColor="#E57373"
+        android:pathData="M161,143 L177,143 L177,159 L161,159 Z" />
+
+    <!-- 인천 -->
+    <path
+        android:fillColor="#64B5F6"
+        android:pathData="M144,143 L160,143 L160,159 L144,159 Z" />
+
+    <!-- 대전 -->
+    <path
+        android:fillColor="#81C784"
+        android:pathData="M176,260 L192,260 L192,276 L176,276 Z" />
+
+    <!-- 대구 -->
+    <path
+        android:fillColor="#FFD54F"
+        android:pathData="M235,290 L251,290 L251,306 L235,306 Z" />
+
+    <!-- 부산 -->
+    <path
+        android:fillColor="#7986CB"
+        android:pathData="M245,340 L261,340 L261,356 L245,356 Z" />
+
+    <!-- 광주 -->
+    <path
+        android:fillColor="#9575CD"
+        android:pathData="M140,320 L156,320 L156,336 L140,336 Z" />
+
+    <!-- 울산 -->
+    <path
+        android:fillColor="#4DD0E1"
+        android:pathData="M255,320 L271,320 L271,336 L255,336 Z" />
+
+    <!-- 제주 -->
+    <path
+        android:fillColor="#FF8A65"
+        android:pathData="M188,403 L204,403 L204,419 L188,419 Z" />
+</vector>
